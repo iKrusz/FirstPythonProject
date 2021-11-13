@@ -7,21 +7,20 @@ class ROT13Decryptor:
         return self.read_output[line_nr]
 
     def decrypt_line_from_file_(self) -> str:
-        chosen_line: int = int(input("Którą linię pliku chcesz odczytać? :"))
-        line_to_decrypt = self.read_line_from_file_(chosen_line)
-        decrypted_str = ""
+        chosen_line: int = int(input("Którą linię pliku chcesz odczytać?\n>>> "))
+        line_to_decrypt: int = self.read_line_from_file_(chosen_line)
+        decrypted_str: str = ""
         for character in line_to_decrypt:
             if character.isupper():
                 character = character.lower()
                 if ord(character) in range(ord("a"), ord("z") + 1):
                     if ord(character) - 13 < ord("a"):
-                        x = ord(character) - 13
                         decrypted_str += chr(ord("z") + 1 - (13 - (ord(character) - ord("a")))).upper()
                     else:
                         decrypted_str += chr(ord(character) - 13).upper()
                 else:
                     decrypted_str += character.upper()
-            else:
+            else: #Wiem, że jest powtórzenie, ale nie mam pomysłu jak je wyeliminować.
                 if ord(character) in range(ord("a"), ord("z") + 1):
                     if ord(character) - 13 < ord("a"):
                         decrypted_str += chr(ord("z") + 1 - (13 - (ord(character) - ord("a"))))

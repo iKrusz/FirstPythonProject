@@ -24,15 +24,15 @@ def show_main_menu() -> NoReturn:
     while True:
         print(cleandoc(
             """
-            Co chcesz zrobić?
+            \nCo chcesz zrobić?
             1. Zaszyfruj frazę
             2. Odszyfruj frazę
             3. Zakończ program
-            \nWybierz akcję:
+            \nWybierz akcję: 
             """
         ))
         available_choices = [encryptor.encrypt_user_text_, decryptor.decrypt_line_from_file_, exit]
-        choice = int(input("> ")) - 1
+        choice = int(input(">>> ")) - 1
         if choice < len(available_choices):
             available_choices[choice]()
         else:
