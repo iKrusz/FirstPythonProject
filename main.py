@@ -15,11 +15,12 @@ from typing import NoReturn
 
 # Own
 from encryptor import ROT13Encryptor
-# from .decryptor import ROT13Decryptor
+from decryptor import ROT13Decryptor
 
 
 def show_main_menu() -> NoReturn:
     encryptor = ROT13Encryptor()
+    decryptor = ROT13Decryptor()
     while True:
         print(cleandoc(
             """
@@ -30,7 +31,7 @@ def show_main_menu() -> NoReturn:
             \nWybierz akcję:
             """
         ))
-        available_choices = [encryptor.encrypt_user_text_]
+        available_choices = [encryptor.encrypt_user_text_, decryptor.decrypt_line_from_file_, exit]
         choice = int(input("> ")) - 1
         if choice < len(available_choices):
             available_choices[choice]()
